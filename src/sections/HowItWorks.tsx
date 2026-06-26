@@ -17,6 +17,7 @@ export function HowItWorks() {
           opacity: 0,
           y: 24,
           ease: 'power2.out',
+          immediateRender: false, // don't apply the from-state until the trigger is first evaluated (avoids flash-invisible)
           scrollTrigger: { trigger: s, start: 'top 80%', end: 'top 50%', scrub: true },
         }),
       )
