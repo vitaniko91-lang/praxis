@@ -11,10 +11,10 @@ export function Carousel({ label, children }: Props) {
   }
   return (
     <div role="group" aria-roledescription="carousel" aria-label={label} tabIndex={0} onKeyDown={onKey}
-         className="focus-visible:outline outline-2 outline-[var(--accent-text)]">
+         className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--accent-text)]">
       <div className="overflow-hidden">
         <div className="flex transition-transform duration-[400ms] ease-[var(--ease-out)]" style={{ transform: `translateX(-${i * 100}%)` }}>
-          {children.map((c, idx) => <div key={idx} className="min-w-full" aria-hidden={idx !== i}>{c}</div>)}
+          {children.map((c, idx) => <div key={idx} className="min-w-full" aria-hidden={idx !== i} inert={idx !== i ? true : undefined}>{c}</div>)}
         </div>
       </div>
       <div className="mt-4 flex items-center gap-4 font-mono text-xs text-[var(--text-muted)]">
