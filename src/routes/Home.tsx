@@ -1,10 +1,35 @@
-import { hero } from '../content/copy'
+import { lazy, Suspense, useRef } from 'react'
+import { ScrollProgressContext } from '../motion/ScrollProgressContext'
+import { useScrollProgress } from '../motion/useScrollProgress'
+import { Hero } from '../sections/Hero'
+import { Positioning } from '../sections/Positioning'
+import { HowItWorks } from '../sections/HowItWorks'
+import { Capabilities } from '../sections/Capabilities'
+import { Proof } from '../sections/Proof'
+import { CTA } from '../sections/CTA'
+import { Footer } from '../sections/Footer'
+const CrystalCanvas = lazy(() => import('../three/CrystalCanvas').then((m) => ({ default: m.CrystalCanvas })))
+
 export default function Home() {
+  const immersiveRef = useRef<HTMLDivElement>(null)
+  const progress = useScrollProgress(immersiveRef)
   return (
-    <section aria-labelledby="hero-h1" className="px-5 md:px-20 py-20">
-      <p className="font-mono text-xs tracking-[2px] text-[var(--accent-text)]">{hero.kicker}</p>
-      <h1 id="hero-h1" className="text-[clamp(3rem,8vw,7.5rem)] font-extrabold leading-[.85] tracking-[-2px]">{hero.h1}</h1>
-      <p className="mt-6 text-[var(--text-muted)] max-w-[48ch]">{hero.sub}</p>
-    </section>
+    <ScrollProgressContext.Provider value={progress}>
+      {/* sections 1–3 share one sticky crystal behind them */}
+      <div ref={immersiveRef} className="relative">
+        <div className="pointer-events-none sticky top-0 h-screen z-0" aria-hidden="true">
+          <Suspense fallback={null}><CrystalCanvas /></Suspense>
+        </div>
+        <div className="-mt-[100vh]">
+          <Hero />
+          <Positioning />
+          <HowItWorks />
+        </div>
+      </div>
+      <Capabilities />
+      <Proof />
+      <CTA />
+      <Footer />
+    </ScrollProgressContext.Provider>
   )
 }

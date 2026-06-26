@@ -20,9 +20,6 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <footer className="px-5 md:px-20 py-10 border-t border-[var(--border-soft)] font-mono text-xs text-[var(--text-muted)]">
-        <span className="text-[var(--accent)]">{brand.mark}</span>{brand.name} — © 2026
-      </footer>
     </>
   )
 }

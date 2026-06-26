@@ -2,6 +2,19 @@ import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import App from './App'
 
+beforeEach(() => {
+  window.matchMedia = ((q: string) => ({
+    matches: true,
+    media: q,
+    addEventListener() {},
+    removeEventListener() {},
+    addListener() {},
+    removeListener() {},
+    onchange: null,
+    dispatchEvent: () => true,
+  })) as unknown as typeof window.matchMedia
+})
+
 test('renders semantic landmarks and a visible h1 on home', () => {
   render(<MemoryRouter initialEntries={['/']}><App /></MemoryRouter>)
   expect(screen.getByRole('banner')).toBeInTheDocument()

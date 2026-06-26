@@ -28,8 +28,10 @@ export function Positioning() {
   return (
     <section ref={root} aria-labelledby="pos-h2" className="relative z-10 min-h-screen flex items-center justify-center px-5">
       <h2 id="pos-h2" className="font-display font-bold text-[clamp(2rem,6vw,4.5rem)] leading-[1] tracking-[-2px] text-center max-w-[16ch]">
+        {/* sr-only span carries the full phrase so getByText queries work */}
+        <span className="sr-only">{positioning.line}</span>
         {positioning.words.map((w, i) => (
-          <span key={i} data-word>
+          <span key={i} data-word aria-hidden="true">
             {w}{' '}
           </span>
         ))}
