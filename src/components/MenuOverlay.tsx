@@ -7,13 +7,15 @@ const FOCUSABLE = 'a[href], button:not([disabled])'
 
 export function MenuOverlay({ open, onClose, items }: Props) {
   const ref = useRef<HTMLDivElement>(null)
+  const onCloseRef = useRef(onClose)
+  useEffect(() => { onCloseRef.current = onClose })
   useEffect(() => {
     if (!open) return
     const prev = document.activeElement as HTMLElement | null
     const focusables = () =>
       Array.from(ref.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? [])
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { onClose(); return }
+      if (e.key === 'Escape') { onCloseRef.current(); return }
       if (e.key === 'Tab') {
         const els = focusables()
         if (els.length === 0) return
@@ -34,7 +36,7 @@ export function MenuOverlay({ open, onClose, items }: Props) {
       document.body.style.overflow = ''
       prev?.focus()
     }
-  }, [open, onClose])
+  }, [open])
 
   if (!open) return null
   return (
