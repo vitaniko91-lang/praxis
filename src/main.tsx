@@ -8,6 +8,7 @@ import App from './App'
 import './styles/fonts.css'
 import './styles/tokens.css'
 import './styles/globals.css'
+import { LenisProvider } from './motion/LenisProvider'
 createRoot(document.getElementById('root')!).render(
-  <StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>,
+  <StrictMode><BrowserRouter><LenisProvider><App /></LenisProvider></BrowserRouter></StrictMode>,
 )
