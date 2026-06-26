@@ -19,7 +19,7 @@ export function Field({ id, label, type = 'text', as = 'input', value, onChange,
     'aria-describedby': error ? errId : undefined,
     autoComplete,
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange(e.target.value),
-    className: 'w-full bg-transparent border-b border-[var(--border)] py-3 text-[var(--text-on-light)] focus:border-[var(--accent)] outline-none',
+    className: 'w-full bg-transparent border-b border-[var(--border)] py-3 text-[var(--text-on-light)] focus:border-[var(--accent)]',
   }
   return (
     <div className="flex flex-col gap-1">

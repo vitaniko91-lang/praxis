@@ -21,8 +21,18 @@ test('shows success ONLY after a resolved submit (no optimistic success)', async
   expect(submit).toHaveBeenCalledTimes(1)
 })
 
-test('shows an error message when submit rejects', async () => {
+test('shows an error when submit resolves {ok:false}', async () => {
   const submit = vi.fn().mockResolvedValue({ ok: false })
+  render(<ContactForm onSubmit={submit} />)
+  await userEvent.type(screen.getByLabelText(/name/i), 'Ada')
+  await userEvent.type(screen.getByLabelText(/email/i), 'ada@x.io')
+  await userEvent.type(screen.getByLabelText(/message/i), 'I want the thinking layer.')
+  await userEvent.click(screen.getByRole('button', { name: /send/i }))
+  expect(await screen.findByText(/something went wrong/i)).toBeInTheDocument()
+})
+
+test('shows an error when submit throws (network failure)', async () => {
+  const submit = vi.fn().mockRejectedValue(new Error('network'))
   render(<ContactForm onSubmit={submit} />)
   await userEvent.type(screen.getByLabelText(/name/i), 'Ada')
   await userEvent.type(screen.getByLabelText(/email/i), 'ada@x.io')

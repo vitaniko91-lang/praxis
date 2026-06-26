@@ -45,7 +45,7 @@ export function ContactForm({ onSubmit = defaultSubmit }: Props) {
       <Field id="name" label="Name" value={data.name} onChange={set('name')} error={errors.name} autoComplete="name" />
       <Field id="email" label="Email" type="email" inputMode="email" value={data.email} onChange={set('email')} error={errors.email} autoComplete="email" />
       <Field id="message" label="Message" as="textarea" value={data.message} onChange={set('message')} error={errors.message} />
-      <div aria-live="polite">
+      <div aria-live="polite" aria-atomic="true">
         {status === 'error' && (
           <span className="text-[var(--accent-text)]">Something went wrong. Please try again.</span>
         )}
