@@ -7,6 +7,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', 
 
 :focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
 
+/* Blunt safety-net floor only — scoped to specific properties. The authoritative reduced-motion gate is the JS useReducedMotion hook (added in Task 3), which swaps Canvas→poster, shows full kinetic text, and uses final count values. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }
