@@ -8,12 +8,15 @@ export function useScrollProgress(target: RefObject<HTMLElement | null>) {
     const update = () => {
       const el = target.current
       if (!el) return
-      const top = el.offsetTop
+      // Document-relative top (getBoundingClientRect is viewport-relative; + scrollY makes it
+      // document-relative). offsetTop would be wrong here because the immersive wrapper sits
+      // under positioned ancestors (its own `relative` + <main>).
+      const top = el.getBoundingClientRect().top + window.scrollY
       progress.current = computeProgress(window.scrollY, top, el.offsetHeight)
     }
     update()
     window.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
+    window.addEventListener('resize', update, { passive: true })
     return () => {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
