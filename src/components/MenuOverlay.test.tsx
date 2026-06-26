@@ -21,3 +21,27 @@ test('renders nothing when closed', () => {
   render(<MenuOverlay open={false} onClose={() => {}} items={nav} />)
   expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 })
+
+test('Tab from the last focusable wraps to the first', async () => {
+  render(<MenuOverlay open onClose={() => {}} items={nav} />)
+  const focusables = screen.getAllByRole('link')
+  const closeBtn = screen.getByRole('button', { name: 'Close menu' })
+  const first = closeBtn
+  const last = focusables[focusables.length - 1]
+  last.focus()
+  expect(document.activeElement).toBe(last)
+  await userEvent.tab()
+  expect(document.activeElement).toBe(first)
+})
+
+test('Shift+Tab from the first focusable wraps to the last', async () => {
+  render(<MenuOverlay open onClose={() => {}} items={nav} />)
+  const focusables = screen.getAllByRole('link')
+  const closeBtn = screen.getByRole('button', { name: 'Close menu' })
+  const first = closeBtn
+  const last = focusables[focusables.length - 1]
+  first.focus()
+  expect(document.activeElement).toBe(first)
+  await userEvent.tab({ shift: true })
+  expect(document.activeElement).toBe(last)
+})
