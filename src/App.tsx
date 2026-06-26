@@ -4,6 +4,7 @@ import Manifesto from './routes/Manifesto'
 import NotFound from './routes/NotFound'
 import { brand } from './content/copy'
 import { Nav } from './components/Nav'
+import { Footer } from './sections/Footer'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      <Footer />
     </>
   )
 }

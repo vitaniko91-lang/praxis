@@ -7,7 +7,6 @@ import { HowItWorks } from '../sections/HowItWorks'
 import { Capabilities } from '../sections/Capabilities'
 import { Proof } from '../sections/Proof'
 import { CTA } from '../sections/CTA'
-import { Footer } from '../sections/Footer'
 const CrystalCanvas = lazy(() => import('../three/CrystalCanvas').then((m) => ({ default: m.CrystalCanvas })))
 
 export default function Home() {
@@ -29,7 +28,6 @@ export default function Home() {
       <Capabilities />
       <Proof />
       <CTA />
-      <Footer />
     </ScrollProgressContext.Provider>
   )
 }
