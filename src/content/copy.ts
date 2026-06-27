@@ -61,6 +61,27 @@ export const builtFor = {
   ],
 }
 
+export const testimonials = {
+  heading: 'From the teams shipping it',
+  items: [
+    { quote: 'PRAXIS took three months of inference infrastructure off our roadmap. We shipped the feature in a week.', name: 'Maya Chen', role: 'Eng Lead, Northwind' },
+    { quote: 'The guardrails alone justified it — no PII leaks, no off-topic answers, in production from day one.', name: 'Diego Ruiz', role: 'CTO, Halcyon Labs' },
+    { quote: 'One SDK call replaced a tangle of model routing and retries. Our support copilot finally feels reliable.', name: 'Priya Nair', role: 'Head of Product, Tessellate' },
+  ],
+}
+
+export const faq = {
+  heading: 'Questions',
+  items: [
+    { q: 'How fast can we integrate?', a: 'One SDK call. Most teams ship a working reasoning layer in an afternoon; full production rollout is typically under a week.' },
+    { q: 'Which models do you support?', a: 'Over 40 models across providers, selected per request by the router. Pin a model, or let PRAXIS choose by cost, latency, or quality.' },
+    { q: 'How do guardrails work?', a: 'Policy, PII, and safety checks run on every request, before and after inference. You compose them per call — e.g. ["no-pii", "on-topic"].' },
+    { q: 'Where does our data go?', a: 'Your data is used only to answer your request and is never used to train models. Bring your own keys and deploy in your region.' },
+    { q: 'What does it cost?', a: 'Usage-based, billed on tokens routed. A free tier to prototype, volume pricing for production. Talk to us for an estimate.' },
+    { q: 'Can we self-host?', a: 'Yes — PRAXIS runs in your cloud or ours. The SDK and routing layer are identical in both.' },
+  ],
+}
+
 export const cta = { heading: "Let's apply it", sub: 'Tell us what you are building.' }
 
 export const manifesto = {

@@ -9,6 +9,8 @@ import { CodeBlock } from '../sections/CodeBlock'
 import { Capabilities } from '../sections/Capabilities'
 import { BuiltFor } from '../sections/BuiltFor'
 import { Proof } from '../sections/Proof'
+import { Testimonials } from '../sections/Testimonials'
+import { Faq } from '../sections/Faq'
 import { CTA } from '../sections/CTA'
 
 export default function Home() {
@@ -31,6 +33,8 @@ export default function Home() {
       <Capabilities />
       <BuiltFor />
       <Proof />
+      <Testimonials />
+      <Faq />
       <CTA />
     </ScrollProgressContext.Provider>
   )
