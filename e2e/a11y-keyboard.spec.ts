@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test('skip link is first focusable and targets #main', async ({ page }) => {
   await page.goto('/')
+  await page.locator('main').waitFor() // ensure the page is rendered before Tab (heavy chunk can delay first paint)
   await page.keyboard.press('Tab')
   await expect(page.getByText(/skip to content/i)).toBeFocused()
 })
