@@ -5,7 +5,9 @@ import { CrystalCanvas } from '../three/CrystalCanvas'
 import { Hero } from '../sections/Hero'
 import { Positioning } from '../sections/Positioning'
 import { HowItWorks } from '../sections/HowItWorks'
+import { CodeBlock } from '../sections/CodeBlock'
 import { Capabilities } from '../sections/Capabilities'
+import { BuiltFor } from '../sections/BuiltFor'
 import { Proof } from '../sections/Proof'
 import { CTA } from '../sections/CTA'
 
@@ -25,7 +27,9 @@ export default function Home() {
           <HowItWorks />
         </div>
       </div>
+      <CodeBlock />
       <Capabilities />
+      <BuiltFor />
       <Proof />
       <CTA />
     </ScrollProgressContext.Provider>
